@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -6,11 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class FramesTest {
-    WebDriver driver;
+public class FramesTest extends BaseTests{
+//    WebDriver driver;
     @Test
     public void framesTest(){
-        openBrowser();
+//        openBrowser();
         chooseMenu();
         chooseSubMenu();
         interractWithFrameOne();
@@ -18,11 +20,11 @@ public class FramesTest {
        // closeBrowser();
     }
 
-    public void openBrowser() {
-        driver = new ChromeDriver();
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
-    }
+//    public void openBrowser() {
+//        driver = new ChromeDriver();
+//        driver.get("https://demoqa.com/");
+//        driver.manage().window().maximize();
+//    }
 
     //    facem o metoda care alege un meniu
     public void chooseMenu() {
@@ -47,9 +49,9 @@ public class FramesTest {
         WebElement framesSubMeniu = driver.findElement(By.xpath("//span[text()='Frames']"));
         framesSubMeniu.click();
     }
-    public void closeBrowser(){
-        driver.quit();
-    }
+//    public void closeBrowser(){
+//        driver.quit();
+//    }
 
     public void interractWithFrameOne(){
         WebElement frameOneElement = driver.findElement(By.id("frame1"));
