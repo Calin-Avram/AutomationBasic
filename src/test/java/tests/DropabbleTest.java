@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,23 +13,23 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class DropabbleTest {
-    WebDriver driver;
+public class DropabbleTest extends BaseTests{
+//    WebDriver driver;
 
     @Test
     public void dropabbleTest() {
-        openBrowser();
+//        openBrowser();
         chooseMenu();
         chooseSubMenu();
         pickAndDropElement();
         // closeBrowser();
     }
 
-    public void openBrowser() {
-        driver = new ChromeDriver();
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
-    }
+//    public void openBrowser() {
+//        driver = new ChromeDriver();
+//        driver.get("https://demoqa.com/");
+//        driver.manage().window().maximize();
+//    }
 
     //    facem o metoda care alege un meniu
     public void chooseMenu() {
@@ -75,7 +77,7 @@ public void pickAndDropElement(){
     System.out.println("Initial text is: " + initialTargetText + ". Text after successful drop: " + droppableElement.getText());
 }
 
-    public void closeBrowser() {
-        driver.quit();
-    }
+//    public void closeBrowser() {
+//        driver.quit();
+//    }
 }

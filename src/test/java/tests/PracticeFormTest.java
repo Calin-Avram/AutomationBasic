@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -8,14 +10,14 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
-public class PracticeFormTest {
-    WebDriver driver;
+public class PracticeFormTest extends BaseTests {
+//    WebDriver driver;
     @Test
     public void practiceFormTest(){
 
-        driver = new ChromeDriver(); // aleg driveru Chrome pentru a naviga
-        driver.get("https://demoqa.com/"); // navighez catre pagina website-ului
-        driver.manage().window().maximize(); // maximizez fereastra de navigare
+//        driver = new ChromeDriver(); // aleg driveru Chrome pentru a naviga
+//        driver.get("https://demoqa.com/"); // navighez catre pagina website-ului
+//        driver.manage().window().maximize(); // maximizez fereastra de navigare
 //      Identific meniul dorit si fac click pe el
         WebElement FormMeniu = driver.findElement(By.xpath("//h5[text()='Forms']")); // am identificat meniul dorit folosind XPath
 //      Fac un scroll (pentru ca din cauza reclamelor nu se vede butonul 'Forms')

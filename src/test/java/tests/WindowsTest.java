@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,27 +11,27 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindowsTest {
-    WebDriver driver;
+public class WindowsTest extends BaseTests{
+//    WebDriver driver;
 
     @Test
 
     public void windowsTest (){
-        openBrowser();
+//        openBrowser();
         chooseMenu();
         chooseSubMenu();
         interractWithNewTab();
         interractWithNewWindow();
         interractWithNewWindowsMessage();
-        closeBrowser();
+//        closeBrowser();
 
     }
 
-    public void openBrowser() {
-        driver = new ChromeDriver();
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
-    }
+//    public void openBrowser() {
+//        driver = new ChromeDriver();
+//        driver.get("https://demoqa.com/");
+//        driver.manage().window().maximize();
+//    }
 
     //    facem o metoda care alege un meniu
     public void chooseMenu() {
@@ -93,7 +95,5 @@ public class WindowsTest {
         driver.close();
     }
 
-    public void closeBrowser(){
-        driver.quit();
-    }
+
 }
