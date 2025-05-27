@@ -38,7 +38,7 @@ public class AlertsPage extends BasePage {
     public void interactWithTimerAlert() {
         driver.findElement(timerAlertButton).click();
         //Inainte sa schimbam focusul pe alerta, trebuie sa punem un wait explicit;
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         wait.until(ExpectedConditions.alertIsPresent());
         Alert timerAlert = driver.switchTo().alert();
         timerAlert.accept();
