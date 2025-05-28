@@ -26,7 +26,7 @@ public class AlertsPage extends BasePage {
 
     @Override
     public void isPageLoaded() {
-        Assert.assertEquals(driver.findElement(pageTitle).getText(),"Alerts","Page is not loaded properly");
+        Assert.assertEquals(driver.findElement(pageTitle).getText(), "Alerts", "Page is not loaded properly");
     }
 
     public void interactWithFirstAlert() {
