@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
 public class PracticeFormPage extends BasePage {
@@ -30,10 +31,12 @@ public class PracticeFormPage extends BasePage {
     private By stateInputElement = By.id("react-select-3-input");
     private By cityInputElement= By.id("react-select-4-input");
     private By submitButton=By.id("submit");
+    private By submitTableKeysLocator = By.xpath("//tbody//td[1]");
+    private By submitTableValuesLocator = By.xpath("//tbody//td[2]");
 
     String firstNameText = "Avram";
     String lastNameText = "Calin";
-    String emailText = "Calin@example.com";
+    String emailFieldText = "Calin@example.com";
     String genderValueText = "Male";
     String mobilePhoneText = "0775432444";
     String monthValueText = "April";
@@ -47,6 +50,7 @@ public class PracticeFormPage extends BasePage {
     String addressValueText = "Targu Mures";
     String stateValueText = "NCR";
     String cityValueText = "Delhi";
+    String pictureFileText = "CAT.jpg";
 
 
     public PracticeFormPage(WebDriver driver) {
@@ -66,6 +70,17 @@ public class PracticeFormPage extends BasePage {
         chooseGender();
         fillPhoneNumber();
         fillDateOfBirth();
+        chooseSubjects();
+        scrollPageDown("200");
+        chooseHobbies();
+        scrollPageDown("200");
+        uploadPicture();
+        fillAddress();
+        fillStateAndCity();
+        clickOnSubmitButton();
+        getExpectedValues();
+        getActualValues();
+        validateThatExpectedValuesEqualActualValues();
 
     }
 
@@ -78,7 +93,7 @@ public class PracticeFormPage extends BasePage {
     }
 
     public void fillEmail() {
-        driver.findElement(emailField).sendKeys(emailText);
+        driver.findElement(emailField).sendKeys(emailFieldText);
     }
 
     public void scrollPageDown(String scrollValue) {
@@ -155,5 +170,34 @@ public class PracticeFormPage extends BasePage {
 
     public void clickOnSubmitButton(){
         driver.findElement(submitButton).click();
+    }
+
+    public HashMap<String, String> getExpectedValues(){
+        HashMap<String,String> expectedValues= new HashMap<>();
+        expectedValues.put("Student Name", firstNameText + " " + lastNameText);
+        expectedValues.put("Student Email", emailFieldText);
+        expectedValues.put("Gender", genderValueText);
+        expectedValues.put("Mobile", mobilePhoneText);
+        expectedValues.put("Date of Birth", dayValueText + " " + monthValueText + "," + yearValueText);
+        expectedValues.put("Subjects", mathSubjectText + ", " + physicsSubjectText);
+        expectedValues.put("Hobbies", sportValueText + ", " + readValueText + ", " + musicValueText);
+        expectedValues.put("Picture", pictureFileText);
+        expectedValues.put("Address", addressValueText);
+        expectedValues.put("State and City", stateValueText + " " + cityValueText);
+        return expectedValues;
+    }
+
+    public HashMap<String,String> getActualValues(){
+        HashMap<String,String> actualValues= new HashMap<>();
+        //indiferent ca alegem submitTablekeys sau values, parcurge oricum ambele liste;
+        for (int i = 0; i < driver.findElements(submitTableKeysLocator).size(); i++) {
+            actualValues.put(driver.findElements(submitTableKeysLocator).get(i).getText(), driver.findElements(submitTableValuesLocator).get(i).getText()); //parcurgem fiecare valoare/cheie si luam textul de pe ea si o adagam in HashMap;
+        }
+        return actualValues;
+    }
+
+    public void validateThatExpectedValuesEqualActualValues(){
+        Assert.assertEquals(getActualValues(), getExpectedValues(), "Actual Values: " + getActualValues() +
+                "are not equal/are not the same with the expected values: " + getExpectedValues());
     }
 }

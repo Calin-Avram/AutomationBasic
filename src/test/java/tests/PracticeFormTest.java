@@ -24,6 +24,7 @@ public class PracticeFormTest extends BaseTest {
         commonPage.isPageLoaded();
         commonPage.goToDesiredSubMenu("Practice Form");
         PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
+        practiceFormPage.isPageLoaded();
         practiceFormPage.fillEntireForm();
 
 //        driver = new ChromeDriver(); // aleg driveru Chrome pentru a naviga
